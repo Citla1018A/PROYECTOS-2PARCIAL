@@ -1,9 +1,69 @@
+package Main;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+
 /**
  *
  * @author Citlalli
  */
 public class Main {
+      public static void main(String[] args) throws IOException{
+      // Lista lista2=new Lista(); 
+        torres torres = new torres();
+        char com='A';
+        char aux='B';
+        char fin='C';
+       int n=0;
+       Scanner s = new Scanner(System.in);
+       System.out.println("Ingrese numero de discos: ");
+       n=s.nextInt();
+    //CREAMOS ARCHIVO DE TEXTO
+        // Crea el archivo de texto 
+        PrintStream o = new PrintStream(new File("Resultado.txt")); 
+  
+        // almacena 
+        PrintStream console = System.out; 
+  
+        // Assign o to output stream 
+        System.setOut(o); 
+        System.out.println("Los movimientos a realizar son:"); 
+        torres.torresHanoi(n, com, aux, fin);
+       
+// System.out.println("");
+        System.setOut(console); 
+        System.out.println("El resultado esta en el archivo de texto"); 
+    }
+        
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+package Main;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.*;
+
+/**
+ *
+ * @author Citlalli
+ */
+public class torres {
+    
+     void torresHanoi(int n,char com, char aux, char fin)  {
+        if(n==1){
+            System.out.println(n+"de "+com+" a "+fin);            
+        }else{
+            torresHanoi(n-1, com, fin, aux);
+            System.out.println(n+"de "+com+" a "+fin);
+            torresHanoi(n-1, aux, com, fin);
+      }
+         
+     }
+  
+     }
+
